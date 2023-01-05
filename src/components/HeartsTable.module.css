@@ -1,0 +1,9 @@
+.scoretable {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+th {
+  padding: 8px;
+  font-size: larger;
+}
