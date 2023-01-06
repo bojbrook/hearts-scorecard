@@ -7,7 +7,7 @@ const HeartsTable = (props) => {
     (state) => state.counter.available_points
   );
   const dispatch = useDispatch();
-
+  console.log(props.players);
   const finishRoundHandler = () => {
     if (available_points > 0) {
       alert("Available points is greater than 0");

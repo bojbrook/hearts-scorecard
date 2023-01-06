@@ -11,8 +11,9 @@ const AddUserForm = (props) => {
   return (
     <>
       <form onSubmit={onSubmitHandler}>
-        <input type="text" placeholder="Name" ref={playerRef} />
-        <input type="submit" value="Submit" />
+        <label>Player 1</label>
+        <input placeholder="Player Name" ref={playerRef} />
+        <input type="radio" id="player1" name="Dealer" value="true"></input>
       </form>
     </>
   );

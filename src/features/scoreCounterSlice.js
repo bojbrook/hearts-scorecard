@@ -4,30 +4,30 @@ export const scoreCounterSlice = createSlice({
   name: "scoreCounter",
   initialState: {
     players: {
-      Bowen: {
-        score: 0,
-        rounds: [],
-        isDealer: true,
-        totalScore: 0,
-      },
-      Sarah: {
-        score: 0,
-        rounds: [],
-        isDealer: false,
-        totalScore: 0,
-      },
-      Robyn: {
-        score: 0,
-        rounds: [],
-        isDealer: false,
-        totalScore: 0,
-      },
-      Ben: {
-        score: 0,
-        rounds: [],
-        isDealer: false,
-        totalScore: 0,
-      },
+      // Bowen: {
+      //   score: 0,
+      //   rounds: [],
+      //   isDealer: true,
+      //   totalScore: 0,
+      // },
+      // Sarah: {
+      //   score: 0,
+      //   rounds: [],
+      //   isDealer: false,
+      //   totalScore: 0,
+      // },
+      // Robyn: {
+      //   score: 0,
+      //   rounds: [],
+      //   isDealer: false,
+      //   totalScore: 0,
+      // },
+      // Ben: {
+      //   score: 0,
+      //   rounds: [],
+      //   isDealer: false,
+      //   totalScore: 0,
+      // },
     },
     available_points: 26,
   },
@@ -51,19 +51,14 @@ export const scoreCounterSlice = createSlice({
         state.players[player].score = 0;
       }
     },
-    addPlayer: (state, action) => {
-      const newPlayer = {
-        score: 0,
-        rounds: [],
-        isDealer: false,
-        totalScore: 0,
-      };
-      state.players[action.payload.name] = newPlayer;
+    addPlayers: (state, action) => {
+      console.log(action.payload.playersObj);
+      state.players = action.payload.playersObj;
     },
   },
 });
 
-export const { incrementByAmount, decrementByAmount, finishRound } =
+export const { incrementByAmount, decrementByAmount, finishRound, addPlayers } =
   scoreCounterSlice.actions;
 
 export default scoreCounterSlice.reducer;

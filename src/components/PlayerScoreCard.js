@@ -8,7 +8,6 @@ import { useState } from "react";
 import AddUserForm from "./AddUserForm";
 
 const PlayerScoreCard = (props) => {
-  const [player, setPlayer] = useState(null);
   const score = useSelector((state) => state.counter.players[props.name].score);
   const gameScore = useSelector(
     (state) => state.counter.players[props.name].totalScore
@@ -32,15 +31,9 @@ const PlayerScoreCard = (props) => {
       dispatch(decrementByAmount({ value: value, player: props.name }));
     }
   };
-
-  const addUserHandler = (player) => {
-    setPlayer(player);
-  };
   return (
     <div>
-      {player && <h1>{player}</h1>}
-      {!player && <AddUserForm addUser={addUserHandler} />}
-      <h2>{gameScore}</h2>
+      <h1>{props.name}</h1>
       <ScoreButtons score={score} setScore={setScore} />
       {rounds.map((round) => {
         return <p>{round}</p>;
