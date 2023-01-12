@@ -6,6 +6,8 @@ import {
 } from "../features/scoreCounterSlice";
 import { useState } from "react";
 import AddUserForm from "./AddUserForm";
+import Col from "react-bootstrap/Col";
+import WarningAlert from "./ui/WarningAlert";
 
 const PlayerScoreCard = (props) => {
   const score = useSelector((state) => state.counter.players[props.name].score);
@@ -22,23 +24,31 @@ const PlayerScoreCard = (props) => {
 
   const setScore = (value) => {
     if (value > available_points) {
-      alert("Can't assign more than 26 points");
+      // Need to pass this to the root component
+      <WarningAlert
+        message="Can't assign more than 26 points"
+        variant="warning"
+      />;
       return;
     }
     if (value > 0) {
       dispatch(incrementByAmount({ value: value, player: props.name }));
     } else {
-      dispatch(decrementByAmount({ value: value, player: props.name }));
+      // This is for preventing the score below zero
+      if (score + value >= 0) {
+        dispatch(decrementByAmount({ value: value, player: props.name }));
+      }
     }
   };
   return (
-    <div>
+    <Col>
       <h1>{props.name}</h1>
+      <h4>{gameScore}</h4>
       <ScoreButtons score={score} setScore={setScore} />
       {rounds.map((round) => {
         return <p>{round}</p>;
       })}
-    </div>
+    </Col>
   );
 };
 

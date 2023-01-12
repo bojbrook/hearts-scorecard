@@ -1,5 +1,6 @@
 .ScoreButtons {
   display: flex;
+  justify-content: center;
 }
 
 .axy {

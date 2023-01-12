@@ -3,32 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const scoreCounterSlice = createSlice({
   name: "scoreCounter",
   initialState: {
-    players: {
-      // Bowen: {
-      //   score: 0,
-      //   rounds: [],
-      //   isDealer: true,
-      //   totalScore: 0,
-      // },
-      // Sarah: {
-      //   score: 0,
-      //   rounds: [],
-      //   isDealer: false,
-      //   totalScore: 0,
-      // },
-      // Robyn: {
-      //   score: 0,
-      //   rounds: [],
-      //   isDealer: false,
-      //   totalScore: 0,
-      // },
-      // Ben: {
-      //   score: 0,
-      //   rounds: [],
-      //   isDealer: false,
-      //   totalScore: 0,
-      // },
-    },
+    players: {},
     available_points: 26,
   },
   reducers: {
