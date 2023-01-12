@@ -1,0 +1,15 @@
+.playerInputForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.playerNameInput {
+  padding: 8px;
+  width: 200px;
+  margin: 5px;
+}
+
+label {
+  display: inline;
+}

@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import AddingUsersForm from "./components/AddingUsersForm";
+import HeartsTable from "./components/HeartsTable";
+import { useSelector, useDispatch } from "react-redux";
+import { addPlayers } from "./features/scoreCounterSlice";
 
 function App() {
+  let players = useSelector((state) => state.counter.players);
+  const [startedGame, setStartedGame] = useState(false);
+  const dispatch = useDispatch();
+  const beginGameHandler = (playerObj) => {
+    if (Object.keys(playerObj).length === 4) {
+      dispatch(addPlayers({ playersObj: playerObj }));
+      setStartedGame(true);
+    }
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hearts ScoreCard</h1>
+      {!startedGame && <AddingUsersForm beginGame={beginGameHandler} />}
+      {/* <AddUserForm />*/}
+      {startedGame && <HeartsTable players={Object.keys(players)} />}
     </div>
   );
 }
